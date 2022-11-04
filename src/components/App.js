@@ -1,5 +1,5 @@
 import React, { Profiler } from "react";
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import "../styles/App.css";
 
 function expensiveOperation(num) {
