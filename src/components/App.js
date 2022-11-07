@@ -1,16 +1,33 @@
-import React from "react";
-import expensiveOperation from "../function.js";
-import { useState } from "react";
+import React, { Profiler } from "react";
+import { useState, useMemo } from "react";
 import "../styles/App.css";
 
+function expensiveOperation(num) {
+  
+}
+
 const App = () => {
-  return <OptimizeTheOperation />;
+  const [inc, setInc] = useState(0);
+  const onClick = () => setInc((i) => i + 1);
+  const renderCallback = (id, phase, actualDuration) => {
+    console.log(actualDuration);
+    localStorage.setItem("timeTaken", actualDuration);
+  };
+  return (
+    <div id="main">
+      <Profiler id="Optimization" onRender={renderCallback}>
+        <OptimizeTheOperation onClick={onClick} />
+      </Profiler>
+    </div>
+  );
 };
 
-const OptimizeTheOperation = () => {
+const OptimizeTheOperation = ({ onClick }) => {
   const [number, setNumber] = useState(1);
   const array = expensiveOperation(number);
-  const submitHandler = (event) => {};
+  const submitHandler = (event) => {
+    
+  };
 
   return (
     <div>
@@ -28,6 +45,10 @@ const OptimizeTheOperation = () => {
           <li key={index}>{item}</li>
         ))}
       </ul>
+      <br />
+      <button id="render" onClick={onClick}>
+        Re-render
+      </button>
     </div>
   );
 };
