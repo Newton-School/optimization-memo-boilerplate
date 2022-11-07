@@ -1,34 +1,16 @@
-import React, { Profiler } from "react";
-import { useState, useMemo } from "react";
+import React from "react";
+import { useState } from "react";
+import expensiveOperation from "../function.js";
 import "../styles/App.css";
 
-function expensiveOperation(num) {
-  
-}
-
 const App = () => {
-  const [inc, setInc] = useState(0);
-  const onClick = () => setInc((i) => i + 1);
-  const renderCallback = (id, phase, actualDuration) => {
-    console.log(actualDuration);
-    localStorage.setItem("timeTaken", actualDuration);
-  };
-  return (
-    <div id="main">
-      <Profiler id="Optimization" onRender={renderCallback}>
-        <OptimizeTheOperation onClick={onClick} />
-      </Profiler>
-    </div>
-  );
+  return <OptimizeTheOperation />;
 };
 
-const OptimizeTheOperation = ({ onClick }) => {
+const OptimizeTheOperation = () => {
   const [number, setNumber] = useState(1);
   const array = expensiveOperation(number);
-  const submitHandler = (event) => {
-    
-  };
-
+  const submitHandler = (event) => {};
   return (
     <div>
       Enter the number:
@@ -45,10 +27,6 @@ const OptimizeTheOperation = ({ onClick }) => {
           <li key={index}>{item}</li>
         ))}
       </ul>
-      <br />
-      <button id="render" onClick={onClick}>
-        Re-render
-      </button>
     </div>
   );
 };
