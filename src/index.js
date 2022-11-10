@@ -13,8 +13,9 @@ const Index = () => {
     <div id="main">
       <React.Profiler id="Optimization" onRender={renderCallback}>
         <App />
+        Counter: {inc}
         <button id="render" onClick={onClick}>
-          Re-render
+          Increase the Counter
         </button>
       </React.Profiler>
     </div>
