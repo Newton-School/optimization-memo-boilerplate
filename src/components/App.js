@@ -17,7 +17,7 @@ const OptimizeTheOperation = () => {
       <form onSubmit={submitHandler}>
         <input id="num" defaultValue={number} />
         <button id="submit" type="submit">
-          Click me uwu
+          Click me
         </button>
       </form>
       <br />
